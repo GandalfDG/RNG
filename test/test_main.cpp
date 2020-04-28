@@ -20,4 +20,9 @@ TEST_CASE("32-bit LFSR RNG is instantiated", "[LFSR]") {
 
     }
 
+    SECTION("get first value out") {
+
+        REQUIRE(rng.rand() == 10);
+    }
+
 }
