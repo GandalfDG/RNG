@@ -22,4 +22,4 @@ build/test_boilerplate.o: test/test_boilerplate.cpp
 	$(CC) $< $(TEST_FLAGS) -c -o$@
 
 $(TEST_BIN): $(TEST_SRC) build/test_boilerplate.o
-	$(CC) $? $(TEST_FLAGS) -o $(TEST_BIN)
+	$(CC) $(TEST_SRC) build/test_boilerplate.o $(TEST_FLAGS) -o $(TEST_BIN)
