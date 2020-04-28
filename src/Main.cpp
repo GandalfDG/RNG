@@ -1,12 +1,13 @@
 #include <iostream>
 #include "../include/GaloisRNG.hpp"
+#include "../include/FisherYates.hpp"
+
+using std::cout;
 
 int main() {
-    GaloisRNG rng(4141996);
+    unsigned int seed = 8675309;
+    GaloisRNG rng(seed);
+    FisherYates shuffler(rng);
 
-    for(int i = 0; i < 100; i++) {
-        std::cout << rng.rand(1, 10) << std::endl;
-    }
-
-    return 0;
+    cout << "32-bit Galois LFSR with taps at " << rng.getTaps().data() << " and seeded with " << seed << std::endl;
 }
