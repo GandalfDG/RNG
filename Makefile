@@ -10,10 +10,10 @@ RUNNER_SRC = src/Main.cpp src/GaloisRNG.cpp
 RUNNER_BIN = bin/runner
 
 runner: $(RUNNER_BIN)
-	@./$(RUNNER_BIN)
+	$(RUNNER_BIN)
 
 $(RUNNER_BIN): $(RUNNER_SRC)
-	$(CC) $< $(TEST_FLAGS) -c -o$@
+	$(CC) $(RUNNER_SRC) $(TEST_FLAGS) -o$@
 
 test: $(TEST_BIN)
 	@./$(TEST_BIN) -s
