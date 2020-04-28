@@ -48,12 +48,14 @@ TEST_CASE("32-bit Galois LFSR", "[LFSR]") {
 }
 
 TEST_CASE("Shuffle algorithm implementation") {
-    GaloisRNG rng(8675309);
+    GaloisRNG rng(123456);
     FisherYates shuffler(rng);
 
     SECTION("small vector shuffle") {
         std::vector<std::uint32_t> deck = {1, 2, 3, 4, 5};
-        
+        shuffler.shuffle(deck);
+
+        REQUIRE(deck[0] != 1);
     }
 
 }
