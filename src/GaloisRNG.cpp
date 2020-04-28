@@ -13,6 +13,7 @@ std::uint32_t GaloisRNG::rand() {
 }
 
 unsigned int GaloisRNG::rand(unsigned int lowerBound, unsigned int upperBound) {
+    // stackoverflow tells me this isn't uniform, but I think that's fine
     return lowerBound + rand() % ((upperBound + 1) - lowerBound);
 }
 
@@ -37,6 +38,7 @@ void GaloisRNG::tapsToInt() {
 }
 
 void GaloisRNG::shift() {
+    // give my regards to wikipedia https://en.wikipedia.org/wiki/Linear-feedback_shift_register#Galois_LFSRs
     bool lowBit = lfsrRegister & 0x01;
     lfsrRegister >>= 1;
     if(lowBit) {
