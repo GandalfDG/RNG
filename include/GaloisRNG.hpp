@@ -7,15 +7,18 @@ class GaloisRNG {
 public:
     
     GaloisRNG(int);
-    GaloisRNG(std::vector<int> taps, int);
 
     const std::vector<int>& getTaps();
     int getSeed();
+    unsigned int getTapBinary();
 
 private:
 
     std::vector<int> taps;
     int seed;
+    unsigned int tapBinary;
+
+    void tapsToInt();
 
 };
 

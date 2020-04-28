@@ -9,13 +9,15 @@ TEST_CASE("32-bit LFSR RNG is instantiated", "[LFSR]") {
         REQUIRE( rng.getTaps().size() == 4 );
         REQUIRE( rng.getTaps()[0] == 32 );
         REQUIRE( rng.getTaps()[3] == 25 );    
+
+        REQUIRE( rng.getTapBinary() == 0xa3000000);
     
     }
 
     SECTION("seed the RNG") {
 
         REQUIRE( rng.getSeed() == 123);
-        
+
     }
 
 }
