@@ -1,8 +1,11 @@
-#include "catch.hpp"
-#include "../include/GaloisRNG.hpp"
 #include <cstdint>
 
-TEST_CASE("32-bit LFSR RNG is instantiated", "[LFSR]") {
+#include "catch.hpp"
+
+#include "../include/GaloisRNG.hpp"
+#include "../include/FisherYates.hpp"
+
+TEST_CASE("32-bit Galois LFSR", "[LFSR]") {
     unsigned int seed = 123;
     GaloisRNG rng(seed);
 
@@ -27,6 +30,7 @@ TEST_CASE("32-bit LFSR RNG is instantiated", "[LFSR]") {
         REQUIRE(rng.rand() == 0xa300003d);
     }
 
+    // this takes a while, but I just wanted to be sure
     // SECTION("ensure maximal sequence", "[.slow]") {
     //     long count = 1;
     //     while(rng.rand() != seed) {
@@ -39,6 +43,17 @@ TEST_CASE("32-bit LFSR RNG is instantiated", "[LFSR]") {
 
         REQUIRE(rng.rand(1u, 6u) == 6);
 
+    }
+
+}
+
+TEST_CASE("Shuffle algorithm implementation") {
+    GaloisRNG rng(8675309);
+    FisherYates shuffler(rng);
+
+    SECTION("small vector shuffle") {
+        std::vector<std::uint32_t> deck = {1, 2, 3, 4, 5};
+        
     }
 
 }
