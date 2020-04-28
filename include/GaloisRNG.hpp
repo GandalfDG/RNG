@@ -2,25 +2,28 @@
 #define GALOISRNG_H
 
 #include <vector>
+#include <cstdint>
+
 class GaloisRNG {
 
 public:
     
-    GaloisRNG(int);
+    GaloisRNG(std::uint32_t seed);
 
-    unsigned int rand();
+    std::uint32_t rand();
+    unsigned int rand(unsigned int, unsigned int);
 
-    const std::vector<int>& getTaps();
-    int getSeed();
-    unsigned int getTapBinary();
+    std::vector<int>& getTaps();
+    std::uint32_t getSeed();
+    std::uint32_t getTapBinary();
 
 private:
 
     void shift();
     std::vector<int> taps;
-    int seed;
-    unsigned int tapBinary;
-    unsigned int lfsrRegister;
+    std::uint32_t seed;
+    std::uint32_t tapBinary;
+    std::uint32_t lfsrRegister;
 
     void tapsToInt();
 

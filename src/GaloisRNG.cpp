@@ -1,22 +1,26 @@
 #include "../include/GaloisRNG.hpp"
 
-GaloisRNG::GaloisRNG(int initialSeed) {
+GaloisRNG::GaloisRNG(std::uint32_t initialSeed) {
     taps = {32, 30, 26, 25};        // tap positions for maximal sequence 32-bit LFSR
     seed = initialSeed;             // the initial loaded value for the register
     lfsrRegister = initialSeed;     // lfsrRegister will contain the current state
     tapsToInt();                    // convert the vector of tap locations into a bitmask
 }
 
-unsigned int GaloisRNG::rand() {
+std::uint32_t GaloisRNG::rand() {
     shift();
     return lfsrRegister;
 }
 
-const std::vector<int>& GaloisRNG::getTaps() {
+unsigned int GaloisRNG::rand(unsigned int lowerBound, unsigned int upperBound) {
+    return lowerBound + rand() % ((upperBound + 1) - lowerBound);
+}
+
+std::vector<int>& GaloisRNG::getTaps() {
     return taps;
 }
 
-int GaloisRNG::getSeed() {
+unsigned int GaloisRNG::getSeed() {
     return seed;
 }
 
