@@ -30,15 +30,6 @@ TEST_CASE("32-bit Galois LFSR", "[LFSR]") {
         REQUIRE(rng.rand() == 0xa300003d);
     }
 
-    // this takes a while, but I just wanted to be sure
-    // SECTION("ensure maximal sequence", "[.slow]") {
-    //     long count = 1;
-    //     while(rng.rand() != seed) {
-    //         count++;
-    //     }
-    //     REQUIRE(count == UINT32_MAX);
-    // }
-
     SECTION("get random value in range") {
 
         REQUIRE(rng.rand(1u, 6u) == 6);
@@ -58,4 +49,19 @@ TEST_CASE("Shuffle algorithm implementation") {
         REQUIRE(deck[0] != 1);
     }
 
+}
+
+TEST_CASE("Is the LFSR maximal?", "[.slow]") {
+
+    unsigned int seed = 99348598;
+    GaloisRNG rng(seed);
+
+    // this takes a while, but I just wanted to be sure
+    SECTION("ensure maximal sequence") {
+        long count = 1;
+        while(rng.rand() != seed) {
+            count++;
+        }
+        REQUIRE(count == UINT32_MAX);
+    }
 }
