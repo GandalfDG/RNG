@@ -7,7 +7,7 @@ both of the classes written for this challenge, run `make runner`. This will out
 from the Galois LFSR, and shuffle an example vector using the LFSR as a source of randomness.
 
 After the test executable is built, an optional test to verify that the LFSR outputs the maximal
-sequence may be run by running `bin/test -s [.]`. This may take a few minutes depending on your machine.
+sequence may be run by running `make slow_test`. This may take a few minutes depending on your machine.
 The test verifies that every number representable by a 32-bit integer is output before returning to the
 seed value.
 
