@@ -11,6 +11,8 @@ sequence may be run by running `make slow_test`. This may take a few minutes dep
 The test verifies that every number representable by a 32-bit integer is output before returning to the
 seed value.
 
+The output of the runner can be found in output.txt, and the test output in test_output.txt
+
 ## Sources
 - https://en.wikipedia.org/wiki/Linear-feedback_shift_register#Galois_LFSRs
 - http://courses.cse.tamu.edu/walker/csce680/lfsr_table.pdf

@@ -1,0 +1,18 @@
+bin/runner
+32-bit Galois LFSR with taps at 32 30 26 25 and seeded with 867530908.
+
+here is a sequence of random numbers following the seed value: 
+433765454 216882727 2776018707 4055586697 3688737732 1844368866 922184433 3095115128 1547557564 773778782 
+
+I have verified that the LFSR produces all non-zero values representable by a 32-bit integer
+However, this takes a while to run, so it has been omitted from this demonstration.
+There is a test for it in the test suite.
+
+Now the Galois LFSR random number generator will be used to shuffle the following vector:
+{ 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 }
+
+After shuffling:
+{ 14 6 9 4 13 11 1 7 8 5 2 0 3 12 10 }
+
+And again:
+{ 4 12 3 11 1 0 13 9 14 10 5 7 8 6 2 }
